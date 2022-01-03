@@ -1,8 +1,10 @@
-package com.example.jobfinderapp;
+package com.example.jobfinderapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.jobfinderapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
