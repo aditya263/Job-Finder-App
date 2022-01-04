@@ -1,5 +1,4 @@
 package com.example.jobfinderapp;
-
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
@@ -8,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.multidex.MultiDexApplication;
 
 import com.example.jobfinderapp.di.AppComponent;
+import com.example.jobfinderapp.di.DaggerAppComponent;
 
 import javax.inject.Inject;
 
@@ -16,7 +16,6 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import dagger.android.HasServiceInjector;
 import dagger.android.support.HasSupportFragmentInjector;
-
 
 public class App extends MultiDexApplication implements HasActivityInjector, HasSupportFragmentInjector, HasServiceInjector {
 

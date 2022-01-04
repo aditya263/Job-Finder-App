@@ -1,4 +1,5 @@
 package com.example.jobfinderapp.di;
+
 import com.example.jobfinderapp.App;
 
 import javax.inject.Singleton;
@@ -21,3 +22,4 @@ public interface AppComponent {
 
 
 }
+

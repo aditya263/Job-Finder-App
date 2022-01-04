@@ -4,13 +4,12 @@ import com.example.jobfinderapp.App;
 import com.example.jobfinderapp.Constants;
 import com.example.jobfinderapp.data.api.ApiInterface;
 import com.example.jobfinderapp.data.api.ConnectionServer;
-import com.google.android.datatransport.runtime.dagger.Module;
-import com.google.android.datatransport.runtime.dagger.Provides;
-
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
+import dagger.Module;
+import dagger.Provides;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
