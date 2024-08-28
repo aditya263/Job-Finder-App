@@ -1,4 +1,5 @@
 package com.example.jobfinderapp;
+
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
@@ -28,36 +29,19 @@ public class App extends MultiDexApplication implements HasActivityInjector, Has
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
 
-    AppComponent appComponent;
+    private AppComponent appComponent;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        appComponent = DaggerAppComponent.builder()
+                .application(this)
+                .build();
+        appComponent.inject(this);
+    }
 
     public static App get(Context context) {
         return (App) context.getApplicationContext();
-    }
-
-    public void onCreate() {
-        super.onCreate();
-        createDaggerComponent().inject(this);
-    }
-
-    public void clearComponent() {
-        appComponent = null;
-    }
-
-    public AppComponent createDaggerComponent() {
-        if (appComponent == null)
-            appComponent = DaggerAppComponent.builder()
-                    .application(this)
-                    .build();
-        return appComponent;
-    }
-
-    public AppComponent getAppComponent() {
-        return appComponent;
-    }
-
-    @Override
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return fragmentDispatchingAndroidInjector;
     }
 
     @Override
@@ -66,7 +50,16 @@ public class App extends MultiDexApplication implements HasActivityInjector, Has
     }
 
     @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return fragmentDispatchingAndroidInjector;
+    }
+
+    @Override
     public AndroidInjector<Service> serviceInjector() {
         return dispatchingAndroidInjectorService;
+    }
+
+    public AppComponent getAppComponent() {
+        return appComponent;
     }
 }

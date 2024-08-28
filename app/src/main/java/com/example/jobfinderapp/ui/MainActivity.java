@@ -13,6 +13,8 @@ import com.example.jobfinderapp.databinding.ActivityMainBinding;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
+
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
         implements MainViewModel.Navigator {
 
@@ -40,6 +42,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AndroidInjection.inject(this);
         binding = getViewDataBinding();
         viewModel = new ViewModelProvider(this,
                 new MainViewModel.ModelFactory(this, server)
